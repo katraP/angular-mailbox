@@ -1,0 +1,13 @@
+<ul class="contact-list">
+    <li ng-repeat="user in main.list">
+        <div class="contact__name">{{user.name}}</div>
+        <div class="contact__email">{{user.email}}</div>
+        <div class="contact__edit"
+             ng-click="main.editUser({
+              id: $index,
+              username: user.name,
+              email: user.email
+            });">edit</div>
+    </li>
+</ul>
+<contact-modal class="mail-contact-wrap" ng-show="main.editMode"></contact-modal>

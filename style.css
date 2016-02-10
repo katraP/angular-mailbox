@@ -1,0 +1,174 @@
+/* Put your css in here */
+.loading-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    z-index: 2;
+    opacity: 0.6;
+}
+.loading-wrap.invisible {
+    display: none;
+}
+.loading-wrap__text {
+    font: 18px Arial, Helvetica, sans-serif;
+    color: #f1f1f1;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom: 0;
+}
+.mail-wrap {
+    min-width: 600px;
+}
+.mail-head {
+    border-bottom: 1px solid #333;
+    padding: 5px 0 30px 0;
+    position: relative;
+}
+.mail-head__title {
+    color: #eb5600;
+    font: 22px Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    display: inline-block;
+    padding: 7px 10px;
+    width: 120px;
+    box-sizing: border-box;
+}
+.mail-head__title:after {
+    content: '▼';
+    display: inline-block;
+    font-size: 11px;
+    color: #333;
+    position: relative;
+    top: -2px;
+    left: 5px;
+}
+.mail-head__title:hover {
+    border: 1px solid #eb5600;
+    padding: 6px 9px;
+}
+.mail-head__title.opened {
+    border: 1px solid #eb5600;
+    padding: 6px 9px 7px 9px;
+    border-bottom: none;
+}
+.mail-header-list {
+    position: absolute;
+    top: 28px;
+    background-color: #fff;
+    padding-left: 0;
+    border: 1px solid #eb5600;
+    border-top: none;
+    width: 120px;
+    box-sizing: border-box;
+}
+.mail-header-list__item {
+    list-style-type: none;
+    padding: 5px 10px;
+    font: 14px Arial, Helvetica, sans-serif;
+    color: #333;
+    transition: all .3s;
+}
+.mail-header-list__item:hover {
+    color: #eb5600;
+    cursor: pointer;
+}
+.mail-head__add {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 50px;
+    cursor: pointer;
+    font: 16px Arial, Helvetica, sans-serif;
+}
+.mail-head__add:hover {
+    color: #eb5600;
+}
+.mail-body {
+    height: 500px;
+    margin-top: 1px;
+    border-top: 1px solid #333;
+    display: block;
+}
+.mail-sidebar, .mail-list {
+    display: inline-block;
+    vertical-align: top;
+    height: 500px;
+}
+
+.mail-sidebar {
+    border-right:1px solid #333;
+    width: 200px;
+}
+.mail-list {
+    border-left:1px solid #333;
+    margin-left: -3px;
+}
+.mail-list table {
+    border-collapse: collapse;
+}
+.mail-sidebar__category {
+    display:block;
+    padding: 5px 5px 5px 15px;
+    transition: all .3s;
+}
+.mail-sidebar__category:hover, .mail-list-item:hover, .mail-sidebar__category.active {
+    color: #eb5600;
+    cursor: pointer;
+}
+.mail-list-item td {
+    padding: 5px 20px 5px 5px;
+}
+.mail-list-item td:last-child {
+    padding-right: 5px;
+}
+.mail-contact-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+.mail-contact-modal {
+    width: 300px;
+    height: 300px;
+    background-color: #fff;
+    box-shadow: 0 0 2px #333;
+    padding: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+.contact-list {
+    padding: 0;
+}
+.contact-list li {
+    list-style-type: none;
+    border-bottom: 1px solid #aaa;
+    padding: 5px 10px;
+}
+.contact__name, .contact__email, .contact__edit {
+    display: inline-block;
+    vertical-align: top;
+    font: 16px Arial, Helvetica, sans-serif;
+}
+.contact__name {
+    width: 150px;
+}
+.contact__email {
+    width: 300px;
+}
+.contact__edit:hover {
+    color: #eb5600;
+    cursor: pointer;
+}

@@ -1,0 +1,53 @@
+{
+  "inbox": [
+    {
+      "author": "User",
+      "title": "About tomorrow",
+      "date": "20.01.2001"
+    },
+    {
+      "author": "Beki",
+      "title": "Hi, don't forget about..",
+      "date": "20.01.2001"
+    },
+    {
+      "author": "Provider",
+      "title": "Second mail",
+      "date": "20.01.2001"
+    },
+    {
+      "author": "unnamed",
+      "title": "Second mail",
+      "date": "20.01.2001"
+    }
+  ],
+  "sent": [
+    {
+      "author": "me",
+      "title": "About tomorrow...",
+      "date": "20.01.2001"
+    },
+    {
+      "author": "User",
+      "title": "Second mail",
+      "date": "20.01.2001"
+    }
+  ],
+  "spam": [
+    {
+      "author": "mail.ru",
+      "title": "Only today!",
+      "date": "20.01.2001"
+    },
+    {
+      "author": "Special prop",
+      "title": "SALES FOR ALL!!!",
+      "date": "20.01.2001"
+    },
+    {
+      "author": "prom.ua",
+      "title": "Buy today and win tomorrow!",
+      "date": "20.01.2001"
+    }
+  ]
+}

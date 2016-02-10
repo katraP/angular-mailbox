@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Mailbox</title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://code.angularjs.org/1.4.8/angular.js"></script>
+    <script src="https://cdn.rawgit.com/angular-ui/ui-router/805e69bae319e922e4d3265b7ef565058aaff850/release/angular-ui-router.js"></script>
+    <script src="directives/mailContainer.js"></script>
+    <script src="directives/sidebar.js"></script>
+    <script src="directives/mailWrap.js"></script>
+    <script src="directives/contactsWrap.js"></script>
+    <script src="directives/contactModal.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="mail">
+<div class="mail-wrap">
+    <div class="mail-head" >
+        
+        <span class="mail-head__title"
+              ng-click="main.showMailboxCategory = !main.showMailboxCategory"
+              ng-class="main.showMailboxCategory ? 'opened' : '';">{{main.currentMailboxCategory}}</span>
+        <ul class="mail-header-list" ng-show ="main.showMailboxCategory">
+            <li class="mail-header-list__item"
+                ng-repeat="category in main.categories"
+                ng-click="main.changeCategory(category.title)" ui-sref="{{category.url}}">{{category.title}}</li>
+        </ul>
+        <span class="mail-head__add"
+              ng-show="main.currentMailboxCategory === 'Contacts'"
+              ng-click="main.editUser();">+ Add contact</span>
+    </div>
+
+    <mail-wrap class="mail-body">
+        <loader class="loading-wrap" ng-class="main.loaderIsVisible ? '': 'invisible' ">
+            <span class="loading-wrap__text">Loading...</span>
+        </loader>
+        <ui-view></ui-view>
+    </mail-wrap>
+</div>
+</body>
+</html>
