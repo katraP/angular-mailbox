@@ -2,61 +2,68 @@ function mailWrap() {
     return {
         restrict: 'E',
         controllerAs: 'main',
-        controller: ['$http', '$timeout', 'LS', function($http, $timeout, LS) {
+        controller: ['$timeout', 'LS', 'getData', 'state', function($timeout, LS, getData, state) {
 
             this.loaderIsVisible = true;
-            this.currentMailboxCategory = 'Mail'; // title for category block
-            this.categories = [{
+            this.categories = [{// list of categories in header block
                 url: 'Mail.inbox',
                 title: 'Mail'
                 },
                 {
                     url: 'Contacts',
                     title: 'Contacts'
-                }]; // list of categories in header block
+                }];
             this.showMailboxCategory = false; // flag which trigger show/hide action
-            this.activeId = 0;
-            this.activeMailBox = 'inbox';
 
             this.successHttpCall = function(response) {
+                this.loaderIsVisible = true;
                 this.mail = response.data;
                 this.category = [{id: 0, name: 'inbox', title: 'Inbox'},
                     {id: 1, name: 'sent', title: 'Sent mail'},
                     {id: 2, name: 'spam', title: 'Spam'}];
-                this.loaderIsVisible = false;
+                this.changeCategory();
+                this.activeMailCategory();
             }.bind(this);
 
             this.errorHttpCall = function(response) {
                 console.log(response.status + ", unexpectable error: " + response.statusText)
             };
 
-            this.changeCategory = function(data) {
-                this.currentMailboxCategory = data;
+            this.changeCategory = function() { // change mail/contacts ccategories
+                state.getCurrentState().then(function(data){
+
+                    if(data !== '/contacts') {
+                        this.currentMailboxCategory = 'Mail';
+                        this.activeMailCategory();
+                    }
+                    else {
+                        this.currentMailboxCategory = 'Contacts'
+                    }
+                }.bind(this));
+
                 this.showMailboxCategory = false;
             };
 
-            this.activeCategory = function(index) {
-                this.loaderIsVisible = true;
-                $timeout(function() {
-                    this.activeId = index;
+            this.activeMailCategory = function() { // change inbox/sent/spam categories
+                state.getCurrentState().then(function(data) {
+                    console.log(data);
                     this.category.forEach(function(el) {
-                        if(el.id == this.activeId) {
+                        if('/'+el.name == data) {
                             this.activeMailBox = el.name;
                         }
                         this.loaderIsVisible = false;
-                    }.bind(this))
-                }.bind(this), 1000);
+                    }.bind(this));
+                }.bind(this));
             };
-
-
             $timeout(function() {
-                $http.get('data.json').then(this.successHttpCall, this.errorHttpCall);
+                getData.get().then(this.successHttpCall, this.errorHttpCall);
             }.bind(this), 500);
+
 
 
             //contacts operations
 
-            this.list = (localStorage.contacts) ? LS.readData() : [];
+            this.contactList = (localStorage.contacts) ? LS.readData() : [];
 
             this.editUser = function(data) {
                 this.editMode = true;
@@ -74,7 +81,7 @@ function mailWrap() {
 
             this.updateContacts = function() {
                 this.editMode = false;
-                this.list = LS.readData();
+                this.contactList = LS.readData();
             };
 
             this.resetContactSettings = function() {

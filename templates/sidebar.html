@@ -1,6 +1,6 @@
 <div ng-repeat="category in main.category">
-    <span class="mail-sidebar__category" ng-click="main.activeCategory($index)"
+    <span class="mail-sidebar__category" ng-click="main.activeMailCategory()"
           ui-sref="Mail.{{category['name']}}"
-          ng-class="main.activeId===$index ? 'active': '' ">{{category['title']}}
+          ui-sref-active="active">{{category['title']}}
     </span>
 </div>

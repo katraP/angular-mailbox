@@ -25,7 +25,7 @@
         <ul class="mail-header-list" ng-show ="main.showMailboxCategory">
             <li class="mail-header-list__item"
                 ng-repeat="category in main.categories"
-                ng-click="main.changeCategory(category.title)" ui-sref="{{category.url}}">{{category.title}}</li>
+                ng-click="main.changeCategory()" ui-sref-active="active" ui-sref="{{category.url}}">{{category.title}}</li>
         </ul>
         <span class="mail-head__add"
               ng-show="main.currentMailboxCategory === 'Contacts'"

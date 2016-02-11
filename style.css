@@ -76,7 +76,7 @@
     color: #333;
     transition: all .3s;
 }
-.mail-header-list__item:hover {
+.mail-header-list__item:hover, .mail-header-list__item.active {
     color: #eb5600;
     cursor: pointer;
 }

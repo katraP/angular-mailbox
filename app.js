@@ -57,4 +57,20 @@ app.factory('LS', function() {
         return JSON.parse(localStorage.contacts);
     };
     return this;
-});
+})
+    .factory('getData', function($http) {
+        return {
+            get: function() {
+                return $http.get('data.json');
+            }
+        }
+    })
+    .factory('state', function($state, $timeout) {
+        return {
+            getCurrentState: function() {
+                return $timeout(function () {
+                    return $state.current.url
+                }, 100);
+            }
+        }
+    });
